@@ -1,7 +1,7 @@
 package moviebuddy;
 
+import moviebuddy.domain.Movie;
 import moviebuddy.util.FileSystemUtils;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.BufferedReader;
