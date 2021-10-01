@@ -1,5 +1,6 @@
 package moviebuddy;
 
+import moviebuddy.domain.CsvMovieFinder;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieFinder;
 import moviebuddy.util.FileSystemUtils;
@@ -38,7 +39,7 @@ public class MovieBuddyApplication {
      */
 
     void run(String[] args) throws Exception {
-        final MovieFinder movieFinder = new MovieFinder();
+        final MovieFinder movieFinder = new CsvMovieFinder();
 
         final AtomicBoolean running = new AtomicBoolean(true);
         final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
