@@ -1,26 +1,16 @@
 package moviebuddy;
 
-import moviebuddy.domain.CsvMovieFinder;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieFinder;
-import moviebuddy.util.FileSystemUtils;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -39,7 +29,7 @@ public class MovieBuddyApplication {
      */
 
     void run(String[] args) throws Exception {
-        final MovieFinder movieFinder = new CsvMovieFinder();
+        final MovieFinder movieFinder = new MovieFinder();
 
         final AtomicBoolean running = new AtomicBoolean(true);
         final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
