@@ -17,6 +17,9 @@ dependencies {
 
     // add web mvc
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // jaxb
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
 }
 
 compileJava {
