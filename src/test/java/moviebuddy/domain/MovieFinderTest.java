@@ -1,6 +1,7 @@
 package moviebuddy.domain;
 
 import moviebuddy.MovieBuddyApplication;
+import moviebuddy.MovieBuddyFactory;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieFinder;
 
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MovieFinderTest {
     public static void main(String[] args) {
         MovieBuddyApplication application = new MovieBuddyApplication();
-        MovieFinder movieFinder = new MovieFinder(new CsvMovieReader());
+        MovieFinder movieFinder = new MovieBuddyFactory().movieFinder();
         List<Movie> result = movieFinder.directedBy("Michael Bay");
         assertEquals(3, result.size());
 
