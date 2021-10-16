@@ -3,6 +3,7 @@ package moviebuddy.domain;
 import moviebuddy.ApplicationException;
 import moviebuddy.util.FileSystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class MovieFinder {
     private final MovieReader movieReader;
 
     @Autowired
-    public MovieFinder(MovieReader movieReader) {
+    public MovieFinder(@Qualifier("csvMovieReader") MovieReader movieReader) {
         this.movieReader = Objects.requireNonNull(movieReader);
     }
 
