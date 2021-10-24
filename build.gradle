@@ -26,6 +26,8 @@ dependencies {
     testImplementation('org.springframework:spring-test')
 
     implementation('ch.qos.logback:logback-classic:1.2.3')
+
+    implementation('org.springframework:spring-oxm:5.3.9')
 }
 
 compileJava {

@@ -2,7 +2,6 @@ package moviebuddy.data;
 
 import moviebuddy.MovieBuddyFactory;
 import moviebuddy.MovieBuddyProfile;
-import moviebuddy.data.JaxbMovieReader;
 import moviebuddy.domain.Movie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,17 +13,16 @@ import java.util.List;
 
 @ActiveProfiles(MovieBuddyProfile.XML_MODE)
 @SpringJUnitConfig(MovieBuddyFactory.class)
-public class JaxbMovieReaderTest {
+public class XmlMovieReaderTest {
 
-    final JaxbMovieReader jaxbMovieReader;
+    final XmlMovieReader movieReader;
 
     @Autowired
-    public JaxbMovieReaderTest(JaxbMovieReader movieReader){
-        this.jaxbMovieReader = movieReader;
+    public XmlMovieReaderTest(XmlMovieReader movieReader){
+        this.movieReader = movieReader;
     }
     @Test
     void NotEmpty_LoadMovies() {
-        JaxbMovieReader movieReader = new JaxbMovieReader();
         List<Movie> movies = movieReader.loadMovies();
         // xml문서의 목록 개수와 같은지 확인
         Assertions.assertEquals(1375, movies.size());
