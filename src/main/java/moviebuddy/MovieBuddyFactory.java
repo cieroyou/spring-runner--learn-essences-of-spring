@@ -25,7 +25,7 @@ public class MovieBuddyFactory {
     static class DataSourceModuleConfig {
         @Profile(MovieBuddyProfile.CSV_MODE)
         @Bean
-        public CsvMovieReader csvMovieReader() throws FileNotFoundException, URISyntaxException {
+        public CsvMovieReader csvMovieReader() {
             CsvMovieReader movieReader = new CsvMovieReader();
             movieReader.setMetadata("movie_metadata.csv");
             return movieReader;
