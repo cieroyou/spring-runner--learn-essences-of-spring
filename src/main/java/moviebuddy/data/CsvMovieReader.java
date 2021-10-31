@@ -5,7 +5,6 @@ import moviebuddy.MovieBuddyProfile;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieReader;
 import moviebuddy.util.FileSystemUtils;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -28,33 +27,7 @@ import java.util.stream.Collectors;
 @Profile(MovieBuddyProfile.CSV_MODE)
 //@Component
 @Repository
-public class CsvMovieReader implements MovieReader{
-    private String metadata;
-
-    public String getMetadata() {
-        return metadata;
-    }
-
-    public void setMetadata(String metadata) {
-        this.metadata = metadata;
-    }
-
-    @PostConstruct
-    public void afterPropertiesSet() throws Exception {
-        // 빈이 초기화 될 때, 올바른 값인지 검증을 해준다.
-        URL metadataUrl = ClassLoader.getSystemResource(getMetadata());
-        if(Objects.isNull(metadataUrl)){
-            throw new FileNotFoundException(metadata);
-        }
-        if(!Files.isReadable(Path.of(metadataUrl.toURI()))){
-            throw new ApplicationException(String.format("cannot read to metadata. [%s]", metadata));
-        }
-    }
-
-    @PreDestroy
-    public void destroy() {
-
-    }
+public class CsvMovieReader extends AbstractFileSystemMovieReader implements MovieReader{
 
     @Override
     public List<Movie> loadMovies() {
