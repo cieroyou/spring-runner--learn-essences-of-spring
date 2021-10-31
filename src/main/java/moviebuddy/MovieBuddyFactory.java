@@ -4,6 +4,9 @@ import moviebuddy.data.CsvMovieReader;
 import org.springframework.context.annotation.*;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+
 /**
  * 객체를 생성하고 관리하는 역할
  */
@@ -22,7 +25,7 @@ public class MovieBuddyFactory {
     static class DataSourceModuleConfig {
         @Profile(MovieBuddyProfile.CSV_MODE)
         @Bean
-        public CsvMovieReader csvMovieReader() {
+        public CsvMovieReader csvMovieReader() throws FileNotFoundException, URISyntaxException {
             CsvMovieReader movieReader = new CsvMovieReader();
             movieReader.setMetadata("movie_metadata.csv");
             return movieReader;
