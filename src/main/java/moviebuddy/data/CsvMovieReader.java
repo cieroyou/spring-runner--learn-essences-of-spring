@@ -8,6 +8,9 @@ import moviebuddy.util.FileSystemUtils;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -17,17 +20,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Profile(MovieBuddyProfile.CSV_MODE)
 //@Component
 @Repository
-public class CsvMovieReader implements MovieReader {
+public class CsvMovieReader extends AbstractFileSystemMovieReader implements MovieReader{
+
     @Override
     public List<Movie> loadMovies() {
         try {
-            final URI resourceUri = ClassLoader.getSystemResource("movie_metadata.csv").toURI();
+            final URI resourceUri = ClassLoader.getSystemResource(getMetadata()).toURI();
             final Path data = Path.of(FileSystemUtils.checkFileSystem(resourceUri));
             final Function<String, Movie> mapCsv = csv -> {
                 try {
@@ -59,4 +64,6 @@ public class CsvMovieReader implements MovieReader {
             throw new ApplicationException("failed to load movies data.", error);
         }
     }
+
+
 }
