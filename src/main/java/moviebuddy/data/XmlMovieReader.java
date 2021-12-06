@@ -34,7 +34,7 @@ public class XmlMovieReader extends AbstractMetadataResourceMovieReader implemen
     @Override
     public List<Movie> loadMovies() {
         try {
-            final InputStream content = ClassLoader.getSystemResourceAsStream(getMetadata());
+            final InputStream content = getMetadataResource().getInputStream();
             final Source source = new StreamSource(content);
             final MovieMetadata metadata = (MovieMetadata) unmarshaller.unmarshal(source);
 
