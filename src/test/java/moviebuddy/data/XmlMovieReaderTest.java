@@ -6,6 +6,7 @@ import moviebuddy.domain.Movie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -22,6 +23,7 @@ public class XmlMovieReaderTest {
     @Autowired
     public XmlMovieReaderTest(XmlMovieReader movieReader){
         this.movieReader = movieReader;
+        this.movieReader.setResourceLoader(new DefaultResourceLoader());
     }
     @Test
     void NotEmpty_LoadMovies() {
