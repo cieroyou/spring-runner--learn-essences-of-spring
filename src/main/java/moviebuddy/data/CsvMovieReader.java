@@ -4,29 +4,21 @@ import moviebuddy.ApplicationException;
 import moviebuddy.MovieBuddyProfile;
 import moviebuddy.domain.Movie;
 import moviebuddy.domain.MovieReader;
-import moviebuddy.util.FileSystemUtils;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Profile(MovieBuddyProfile.CSV_MODE)
 //@Component
 @Repository
-public class CsvMovieReader extends AbstractFileSystemMovieReader implements MovieReader {
+public class CsvMovieReader extends AbstractMetadataResourceMovieReader implements MovieReader {
 
     @Override
     public List<Movie> loadMovies() {

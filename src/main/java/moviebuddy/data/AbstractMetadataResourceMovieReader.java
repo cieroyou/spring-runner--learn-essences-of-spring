@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.FileNotFoundException;
 
-public abstract class AbstractFileSystemMovieReader implements ResourceLoaderAware {
+public abstract class AbstractMetadataResourceMovieReader implements ResourceLoaderAware {
     private String metadata;
     private ResourceLoader resourceLoader;
 
